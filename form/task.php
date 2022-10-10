@@ -11,27 +11,26 @@
       // echo "<br>Name :- " .$name. "<br>Age :- " .$age. "<br>Email  :- " .$email. "<br>Password :- " .$password. "<br>Gender :- " .$gender. "<br>Country :- " .$country;
       
 
-      // $directory = "form";
-      // $target_dir = "form/";
-      // $main_file_name = $_FILES["filename"]["name"];
-      // $main_file_name_size = $_FILES["filename"]["size"];
-      // $target_file = $target_dir . basename($main_file_name);
-      // $ext = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+      $target_dir = "uploads/";
+      $main_file_name = $_FILES["filename"]["name"];
+      $main_file_name_size = $_FILES["filename"]["size"];
+      $target_file = $target_dir . basename($main_file_name);
+      $ext = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
       
 
-      // $temp_file_name = $_FILES["filename"]["temp_name"];
-      // $target_temp_file = $target_dir . basename($temp_file_name);
+      $temp_file_name = $_FILES["filename"]["tmp_name"];
+      $target_temp_file = $target_dir . basename($temp_file_name);
       
-      // $finalpath = $target_dir.$main_file_name;
-      // if(file_exists($finalpath)){
-      //    $file1_name = $name.date("ymd").$ext;
-      //    $finalpath = $target_dir.$name;
-      // }
-      // if(move_uploaded_file($temp_file_name,$target_dir)){
-      //    echo "file successfully uploaded";
-      // }else{
-      //    echo "unable to upload file";
-      // }
+      $finalpath = $target_dir.$main_file_name;
+      if(file_exists($finalpath)){
+         $file1_name = $name.date("ymd").$ext;
+         $finalpath = $target_dir.$file1_name;
+      }
+      if(move_uploaded_file($temp_file_name,$finalpath)){
+         echo "file successfully uploaded";
+      }else{
+         echo "unable to upload file";
+      }
    }else{
       echo "form is not submitting your response!!! please check!";
       header("refresh:3;url=index.html");
@@ -50,5 +49,5 @@
     $_SESSION["gender"] = "$gender";
     $_SESSION["country"] = "$country";
 
-    header("refresh:3;url=display.php");
+   //  header("refresh:3;url=display.php");
 ?>
