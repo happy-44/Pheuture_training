@@ -44,8 +44,8 @@
     //$file = array("name"=>"Happy", "age"=>"21", "Email"=>"happymittal129@gmail.com","password"=>"12345","Gender"=>"male","Country"=>"india");
     curl_setopt($curl1, CURLOPT_URL, "http://localhost/pheuture/curl/display.php");
     curl_setopt($curl1, CURLOPT_POST, 1);
-    curl_setopt($curl1, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($curl1, CURLOPT_POSTFIELDS, http_build_query($_POST));
+    curl_setopt($curl1, CURLOPT_RETURNTRANSFER, 1); //to remove success status
+    curl_setopt($curl1, CURLOPT_POSTFIELDS, http_build_query($_POST));//make our data into http query
     $response = curl_exec($curl1);
     echo $response;
 ?>
